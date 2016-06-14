@@ -37,6 +37,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var fontPicker: UIPickerView!
     
+    // MARK: IBAction functions 
+    
     @IBAction func shareClicked(sender: AnyObject) {
         print ("CLICKED")
         
@@ -60,29 +62,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func pickImageFromAlbum(sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        presentViewController(pickerController, animated: true, completion: nil)
+        presentImagePicker(.SavedPhotosAlbum)
     }
     
     @IBAction func pickAnImageFromCamera (sender: AnyObject) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.Camera
-        presentViewController(pickerController, animated: true, completion: nil)
+        presentImagePicker(.Camera)
     }
+    
+    // MARK: Lifecycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bottomTextField.delegate = self
-        self.topTextField.delegate = self
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = NSTextAlignment.Center
-        bottomTextField.textAlignment = NSTextAlignment.Center
+        bottomTextField.delegate = self
+        topTextField.delegate = self
+        setupTextField(topTextField, defaultText: "TOP")
+        setupTextField(bottomTextField, defaultText: "BOTTOM")
+
         fontPicker.dataSource = self
         fontPicker.delegate = self
         fontPicker.backgroundColor = UIColor.whiteColor()
@@ -104,6 +99,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    // MARK: PickerView functions
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -184,6 +181,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         fontPicker.hidden = true
     }
     
+    // MARK: textfield functions
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true;
@@ -193,7 +192,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.text = ""
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func setupTextField(textField: UITextField, defaultText: String) {
+        textField.text = defaultText
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = NSTextAlignment.Center
+    }
+    
+    // MARK: imagePicker functions
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let imagePicked = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = imagePicked
             imagePickerView.contentMode = .ScaleAspectFit
@@ -202,9 +209,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
          dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    func presentImagePicker(chosenSource: UIImagePickerControllerSourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = chosenSource
+        presentViewController(pickerController, animated: true, completion: nil)
+    }
+    
+    // MARK: Keyboard functions
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
@@ -234,6 +250,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
     }
+    
+    // MARK: functions to generate and save image 
     
     func save() -> Meme {
         //Create the meme
