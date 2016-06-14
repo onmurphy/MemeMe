@@ -29,6 +29,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topToolbar: UINavigationBar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var fontPicker: UIPickerView!
+    @IBOutlet weak var fontToolbar: UINavigationBar!
     
     // MARK: IBAction functions 
     
@@ -52,6 +53,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func changeFontClicked(sender: AnyObject) {
         fontPicker.hidden = false
+        fontToolbar.hidden = false
+    }
+    
+    @IBAction func doneChoosingFont(sender: AnyObject) {
+        fontPicker.resignFirstResponder()
+        fontPicker.hidden = true
+        fontToolbar.hidden = true
     }
     
     @IBAction func pickImageFromAlbum(sender: AnyObject) {
@@ -86,6 +94,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             shareButton.enabled = true
         }
         fontPicker.hidden = true
+        fontToolbar.hidden = true
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -135,9 +144,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         topTextField.textAlignment = NSTextAlignment.Center
         bottomTextField.textAlignment = NSTextAlignment.Center
-
-        fontPicker.resignFirstResponder()
-        fontPicker.hidden = true
     }
     
     // MARK: textfield functions

@@ -84,9 +84,21 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zu-69-vak">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zu-69-vak">
                                 <rect key="frame" x="0.0" y="192" width="600" height="216"/>
                             </pickerView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAv-l3-OpY">
+                                <rect key="frame" x="0.0" y="159" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Choose a font color:" id="9gI-Ny-26h">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="z32-Sg-08N">
+                                            <connections>
+                                                <action selector="doneChoosingFont:" destination="BYZ-38-t0r" id="70v-n2-rgN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -96,14 +108,20 @@
                             <constraint firstItem="ach-pm-7WF" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" id="AaC-Ri-P4O"/>
                             <constraint firstItem="fFC-N5-MgN" firstAttribute="trailing" secondItem="pz8-Rr-Hyx" secondAttribute="trailing" id="Csh-tH-po4"/>
                             <constraint firstItem="ach-pm-7WF" firstAttribute="top" secondItem="aoJ-Yw-kHg" secondAttribute="bottom" constant="-44" id="HUs-Ma-alD"/>
+                            <constraint firstItem="RAv-l3-OpY" firstAttribute="leading" secondItem="Yqr-So-MkR" secondAttribute="leading" id="LY9-H2-XO2"/>
                             <constraint firstItem="Yqr-So-MkR" firstAttribute="trailing" secondItem="aoJ-Yw-kHg" secondAttribute="trailing" id="MTW-oy-ZdC"/>
                             <constraint firstItem="aoJ-Yw-kHg" firstAttribute="top" secondItem="Yqr-So-MkR" secondAttribute="bottom" constant="-45" id="PGa-9V-Q2o"/>
                             <constraint firstItem="ach-pm-7WF" firstAttribute="trailing" secondItem="aoJ-Yw-kHg" secondAttribute="trailing" id="Pu1-1S-Gfe"/>
                             <constraint firstItem="fFC-N5-MgN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="47" id="SeK-b5-hgz"/>
+                            <constraint firstItem="RAv-l3-OpY" firstAttribute="top" secondItem="fFC-N5-MgN" secondAttribute="bottom" constant="75" id="UBf-k2-kzh"/>
                             <constraint firstItem="Yqr-So-MkR" firstAttribute="leading" secondItem="ach-pm-7WF" secondAttribute="leading" id="Udt-Ot-iKv"/>
+                            <constraint firstItem="3zu-69-vak" firstAttribute="top" secondItem="fFC-N5-MgN" secondAttribute="bottom" constant="108" id="WD9-u5-0b4"/>
+                            <constraint firstItem="RAv-l3-OpY" firstAttribute="leading" secondItem="3zu-69-vak" secondAttribute="leading" id="Xbm-LK-zch"/>
                             <constraint firstItem="ach-pm-7WF" firstAttribute="top" secondItem="pz8-Rr-Hyx" secondAttribute="bottom" constant="10" id="YeC-Eh-RlR"/>
                             <constraint firstItem="fFC-N5-MgN" firstAttribute="centerX" secondItem="aoJ-Yw-kHg" secondAttribute="centerX" id="cgk-1i-RUc"/>
                             <constraint firstItem="ach-pm-7WF" firstAttribute="leading" secondItem="aoJ-Yw-kHg" secondAttribute="leading" id="e03-dm-ane"/>
+                            <constraint firstItem="RAv-l3-OpY" firstAttribute="trailing" secondItem="Yqr-So-MkR" secondAttribute="trailing" id="fyQ-az-2Lh"/>
+                            <constraint firstItem="RAv-l3-OpY" firstAttribute="trailing" secondItem="3zu-69-vak" secondAttribute="trailing" id="g2G-Bj-Mdi"/>
                             <constraint firstItem="aoJ-Yw-kHg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="h32-sy-T9v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aoJ-Yw-kHg" secondAttribute="trailing" constant="-20" id="hCo-m2-u0e"/>
                             <constraint firstItem="fFC-N5-MgN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iLa-zr-1UM"/>
@@ -117,6 +135,7 @@
                         <outlet property="cancelButton" destination="Qcs-QY-yMt" id="DbQ-0Z-n31"/>
                         <outlet property="changeFontButton" destination="nx9-qn-W7m" id="IYN-am-EVD"/>
                         <outlet property="fontPicker" destination="3zu-69-vak" id="78c-w5-rkc"/>
+                        <outlet property="fontToolbar" destination="RAv-l3-OpY" id="y8A-zb-OrR"/>
                         <outlet property="imagePickerView" destination="aoJ-Yw-kHg" id="njB-rP-mWJ"/>
                         <outlet property="shareButton" destination="PdW-AB-BzC" id="bcA-Od-j7p"/>
                         <outlet property="topTextField" destination="fFC-N5-MgN" id="Zgh-k8-XBC"/>
