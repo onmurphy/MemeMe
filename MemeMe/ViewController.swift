@@ -17,13 +17,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage: UIImage
     }
     
-    let memeTextAttributes = [
-        NSStrokeColorAttributeName : UIColor.blackColor(),
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
-        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -3.0
-    ]
-    
     let pickerData = ["White", "Black", "Blue", "Green", "Red"]
     
     @IBOutlet weak var bottomTextField: UITextField!
@@ -75,8 +68,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         bottomTextField.delegate = self
         topTextField.delegate = self
-        setupTextField(topTextField, defaultText: "TOP")
-        setupTextField(bottomTextField, defaultText: "BOTTOM")
+        setupTextField(topTextField, defaultText: "TOP", color: UIColor.whiteColor())
+        setupTextField(bottomTextField, defaultText: "BOTTOM", color: UIColor.whiteColor())
 
         fontPicker.dataSource = self
         fontPicker.delegate = self
@@ -117,61 +110,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(row == 0)
-        {
-            let memeTextAttributes = [
-                NSStrokeColorAttributeName : UIColor.blackColor(),
-                NSForegroundColorAttributeName : UIColor.whiteColor(),
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-                NSStrokeWidthAttributeName : -3.0
-            ]
-            topTextField.defaultTextAttributes = memeTextAttributes
-            bottomTextField.defaultTextAttributes = memeTextAttributes
-        }
-        else if(row == 1)
-        {
-            let memeTextAttributes = [
-                NSStrokeColorAttributeName : UIColor.blackColor(),
-                NSForegroundColorAttributeName : UIColor.blackColor(),
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-                NSStrokeWidthAttributeName : -3.0
-            ]
-            topTextField.defaultTextAttributes = memeTextAttributes
-            bottomTextField.defaultTextAttributes = memeTextAttributes
-        }
-        else if(row == 2)
-        {
-            let memeTextAttributes = [
-                NSStrokeColorAttributeName : UIColor.blackColor(),
-                NSForegroundColorAttributeName : UIColor.blueColor(),
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-                NSStrokeWidthAttributeName : -3.0
-            ]
-            topTextField.defaultTextAttributes = memeTextAttributes
-            bottomTextField.defaultTextAttributes = memeTextAttributes
-        }
-        else if(row == 3)
-        {
-            let memeTextAttributes = [
-                NSStrokeColorAttributeName : UIColor.blackColor(),
-                NSForegroundColorAttributeName : UIColor.greenColor(),
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-                NSStrokeWidthAttributeName : -3.0
-            ]
-            topTextField.defaultTextAttributes = memeTextAttributes
-            bottomTextField.defaultTextAttributes = memeTextAttributes
-        }
-        
-        else if(row == 4)
-        {
-            let memeTextAttributes = [
-                NSStrokeColorAttributeName : UIColor.blackColor(),
-                NSForegroundColorAttributeName : UIColor.redColor(),
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-                NSStrokeWidthAttributeName : -3.0
-            ]
-            topTextField.defaultTextAttributes = memeTextAttributes
-            bottomTextField.defaultTextAttributes = memeTextAttributes
+        switch row {
+        case 0:
+            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.whiteColor())
+            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.whiteColor())
+        case 1:
+            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.blackColor())
+            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.blackColor())
+
+        case 2:
+            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.blueColor())
+            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.blueColor())
+
+        case 3:
+            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.greenColor())
+            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.greenColor())
+
+        case 4:
+            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.redColor())
+            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.redColor())
+
+        default: ()
         }
         
         topTextField.textAlignment = NSTextAlignment.Center
@@ -192,8 +151,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.text = ""
     }
     
-    func setupTextField(textField: UITextField, defaultText: String) {
+    func setupTextField(textField: UITextField, defaultText: String, color: UIColor) {
         textField.text = defaultText
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : color,
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName : -3.0
+        ]
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = NSTextAlignment.Center
     }
