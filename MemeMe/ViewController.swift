@@ -46,6 +46,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func cancelClicked(sender: AnyObject) {
+        setupTextField(topTextField, defaultText: "", color: UIColor.whiteColor())
+        setupTextField(bottomTextField, defaultText: "", color: UIColor.whiteColor())
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
