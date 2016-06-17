@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     struct Meme {
         let topText: String
@@ -102,50 +102,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    // MARK: PickerView functions
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch row {
-        case 0:
-            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.whiteColor())
-            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.whiteColor())
-        case 1:
-            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.blackColor())
-            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.blackColor())
-
-        case 2:
-            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.blueColor())
-            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.blueColor())
-
-        case 3:
-            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.greenColor())
-            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.greenColor())
-
-        case 4:
-            setupTextField(topTextField, defaultText: topTextField.text!, color: UIColor.redColor())
-            setupTextField(bottomTextField, defaultText: bottomTextField.text!, color: UIColor.redColor())
-
-        default: ()
-        }
-        
-        topTextField.textAlignment = NSTextAlignment.Center
-        bottomTextField.textAlignment = NSTextAlignment.Center
-    }
-    
     // MARK: textfield functions
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -191,36 +147,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         presentViewController(pickerController, animated: true, completion: nil)
     }
     
-    // MARK: Keyboard functions
-    
-    func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyBoardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    func unsubscribeFromKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:
-            UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-        if bottomTextField.isFirstResponder() {
-            view.frame.origin.y -= getKeyboardHeight(notification)
-        }
-    }
-    
-    func keyBoardWillHide(notification: NSNotification) {
-        if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        return keyboardSize.CGRectValue().height
-    }
     
     // MARK: functions to generate and save image 
     
