@@ -47,5 +47,10 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>impact.ttf</string>
+		<string>deftone stylus.tff</string>
+	</array>
 </dict>
 </plist>

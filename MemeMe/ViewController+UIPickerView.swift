@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -19,7 +20,6 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return pickerData.count
     }
     
-    // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }

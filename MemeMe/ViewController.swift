@@ -36,11 +36,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func shareClicked(sender: AnyObject) {
         print ("CLICKED")
         
-        let meme = save()
+        let meme = generateMemedImage()
         
         let activityViewController = UIActivityViewController(
-            activityItems: [meme.memedImage as UIImage],
+            activityItems: [meme],
             applicationActivities: nil)
+        
+        activityViewController.completionWithItemsHandler = {
+            activity, completed, items, error in
+            if completed {
+                self.save()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
         
         presentViewController(activityViewController, animated: true, completion: nil)
     }
