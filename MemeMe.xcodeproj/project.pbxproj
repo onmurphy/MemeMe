@@ -17,8 +17,7 @@
 		06C8DB411D138B180045F603 /* ViewController+UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C8DB401D138B180045F603 /* ViewController+UIPickerView.swift */; };
 		06C8DB431D138C9A0045F603 /* ViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C8DB421D138C9A0045F603 /* ViewController+Keyboard.swift */; };
 		06C8DB451D138EA20045F603 /* ViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C8DB441D138EA20045F603 /* ViewController+TextField.swift */; };
-		06C8DB491D1624CE0045F603 /* deftone stylus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C8DB481D1624CE0045F603 /* deftone stylus.ttf */; };
-		06C8DB4C1D1633020045F603 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C8DB4B1D1633020045F603 /* impact.ttf */; };
+		06C8DB4E1D164F460045F603 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C8DB4D1D164F460045F603 /* impact.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +54,7 @@
 		06C8DB401D138B180045F603 /* ViewController+UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+UIPickerView.swift"; sourceTree = "<group>"; };
 		06C8DB421D138C9A0045F603 /* ViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		06C8DB441D138EA20045F603 /* ViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+TextField.swift"; sourceTree = "<group>"; };
-		06C8DB481D1624CE0045F603 /* deftone stylus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "deftone stylus.ttf"; path = "../../Downloads/deftone-stylus/deftone stylus.ttf"; sourceTree = "<group>"; };
-		06C8DB4B1D1633020045F603 /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = impact.ttf; path = ../../Downloads/impact/impact.ttf; sourceTree = "<group>"; };
+		06C8DB4D1D164F460045F603 /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = impact.ttf; path = MemeMe/impact.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +140,7 @@
 		06C8DB4A1D16274A0045F603 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				06C8DB4B1D1633020045F603 /* impact.ttf */,
-				06C8DB481D1624CE0045F603 /* deftone stylus.ttf */,
+				06C8DB4D1D164F460045F603 /* impact.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -253,8 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06C8DB491D1624CE0045F603 /* deftone stylus.ttf in Resources */,
-				06C8DB4C1D1633020045F603 /* impact.ttf in Resources */,
+				06C8DB4E1D164F460045F603 /* impact.ttf in Resources */,
 				066879131CF8B9B90063D7D1 /* LaunchScreen.storyboard in Resources */,
 				066879101CF8B9B90063D7D1 /* Assets.xcassets in Resources */,
 				0668790E1CF8B9B90063D7D1 /* Main.storyboard in Resources */,
