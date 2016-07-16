@@ -9,13 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
-    struct Meme {
-        let topText: String
-        let bottomText: String
-        let image: UIImage
-        let memedImage: UIImage
-    }
     
     let pickerData = ["White", "Black", "Blue", "Green", "Red"]
     
@@ -59,6 +52,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
+        self.dismissViewControllerAnimated(true, completion: {});
     }
     
     @IBAction func changeFontClicked(sender: AnyObject) {
@@ -142,6 +136,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!, image:
             imagePickerView.image!, memedImage: generateMemedImage())
         
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
         return meme
     }
     
