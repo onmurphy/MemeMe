@@ -78,7 +78,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bottomTextField.delegate = self
+         
         topTextField.delegate = self
         setupTextField(topTextField, defaultText: "TOP", color: UIColor.whiteColor())
         setupTextField(bottomTextField, defaultText: "BOTTOM", color: UIColor.whiteColor())

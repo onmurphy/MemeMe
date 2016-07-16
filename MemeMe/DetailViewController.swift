@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
-class DetailViewController: ViewController {
+class DetailViewController: UIViewController {
     var meme: Meme!
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.imageView!.image = meme.memedImage
+    }
 }

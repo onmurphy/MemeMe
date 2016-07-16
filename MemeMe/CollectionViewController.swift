@@ -12,9 +12,23 @@ import UIKit
 class CollectionViewController: UICollectionViewController {
     var memes: [Meme]!
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     override func viewDidLoad() {
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         memes = applicationDelegate.memes
+        
+        let dimension = (self.view.frame.size.width - (2 * 3.0)) / 3.0
+        flowLayout.minimumInteritemSpacing = 3.0
+        flowLayout.minimumLineSpacing = 3.0
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        memes = applicationDelegate.memes
+        self.collectionView!.reloadData()
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
