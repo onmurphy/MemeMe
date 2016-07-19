@@ -27,8 +27,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: IBAction functions 
     
     @IBAction func shareClicked(sender: AnyObject) {
-        print ("CLICKED")
-        
         let meme = generateMemedImage()
         
         let activityViewController = UIActivityViewController(
@@ -80,6 +78,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
          
         topTextField.delegate = self
+        bottomTextField.delegate = self
         setupTextField(topTextField, defaultText: "TOP", color: UIColor.whiteColor())
         setupTextField(bottomTextField, defaultText: "BOTTOM", color: UIColor.whiteColor())
 

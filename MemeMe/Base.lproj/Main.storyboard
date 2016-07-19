@@ -100,20 +100,31 @@
                         <viewControllerLayoutGuide type="top" id="HfZ-wI-0fo"/>
                         <viewControllerLayoutGuide type="bottom" id="JHW-4G-aeQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ORu-1N-1ND">
+                    <view key="view" contentMode="scaleAspectFit" id="ORu-1N-1ND">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhF-ZY-OQ1">
                                 <rect key="frame" x="69" y="99" width="462" height="402"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czc-Ue-wfS">
+                                <rect key="frame" x="446" y="35" width="85" height="30"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editMeme" destination="LGp-IS-2Qa" eventType="touchUpInside" id="872-wJ-5qB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="czc-Ue-wfS" firstAttribute="top" secondItem="HfZ-wI-0fo" secondAttribute="bottom" constant="15" id="2Gw-CP-dzZ"/>
                             <constraint firstItem="JHW-4G-aeQ" firstAttribute="top" secondItem="lhF-ZY-OQ1" secondAttribute="bottom" constant="99" id="Az2-Fa-Ypq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lhF-ZY-OQ1" secondAttribute="trailing" constant="49" id="D7B-3k-Tfv"/>
                             <constraint firstItem="lhF-ZY-OQ1" firstAttribute="top" secondItem="HfZ-wI-0fo" secondAttribute="bottom" constant="79" id="Fns-uS-3wr"/>
+                            <constraint firstItem="czc-Ue-wfS" firstAttribute="leading" secondItem="ORu-1N-1ND" secondAttribute="leadingMargin" constant="426" id="Fuc-Id-mgW"/>
+                            <constraint firstItem="lhF-ZY-OQ1" firstAttribute="top" secondItem="czc-Ue-wfS" secondAttribute="bottom" constant="34" id="fSs-t1-ILt"/>
                             <constraint firstItem="lhF-ZY-OQ1" firstAttribute="leading" secondItem="ORu-1N-1ND" secondAttribute="leadingMargin" constant="49" id="iXP-vx-8Gi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="czc-Ue-wfS" secondAttribute="trailing" constant="49" id="sR0-3i-UBW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -207,7 +218,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aoJ-Yw-kHg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aoJ-Yw-kHg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -341,6 +352,6 @@
         <image name="tableIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1eX-z1-u8d"/>
+        <segue reference="6kP-xD-Hrl"/>
     </inferredMetricsTieBreakers>
 </document>

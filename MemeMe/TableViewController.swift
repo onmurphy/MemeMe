@@ -11,33 +11,26 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var memes: [Meme]!
-    
-    override func viewDidLoad() {
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        memes = applicationDelegate.memes
-    }
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        memes = applicationDelegate.memes
         self.tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memes.count
+        return appDelegate.memes.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        detailController.meme = self.memes[indexPath.row]
+        detailController.meme = appDelegate.memes[indexPath.row]
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeCell")!
-        let meme = self.memes[indexPath.row]
+        let meme = appDelegate.memes[indexPath.row]
         cell.textLabel?.text = meme.topText + "..." + meme.bottomText
         cell.imageView?.image = meme.memedImage
         return cell
@@ -45,8 +38,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
-            memes.removeAtIndex(indexPath.row)
+            appDelegate.memes.removeAtIndex(indexPath.row)
             tableView.reloadData()
         }
     }

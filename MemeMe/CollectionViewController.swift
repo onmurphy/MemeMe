@@ -10,14 +10,11 @@ import Foundation
 import UIKit
 
 class CollectionViewController: UICollectionViewController {
-    var memes: [Meme]!
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        memes = applicationDelegate.memes
-        
         let dimension = (self.view.frame.size.width - (2 * 3.0)) / 3.0
         flowLayout.minimumInteritemSpacing = 3.0
         flowLayout.minimumLineSpacing = 3.0
@@ -26,24 +23,22 @@ class CollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        memes = applicationDelegate.memes
         self.collectionView!.reloadData()
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return memes.count
+        return appDelegate.memes.count
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        detailController.meme = self.memes[indexPath.row]
+        detailController.meme = appDelegate.memes[indexPath.row]
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCell", forIndexPath: indexPath) as! CustomCollectionViewCell
-        let meme = self.memes[indexPath.item]
+        let meme = appDelegate.memes[indexPath.item]
         cell.imageView?.image = meme.memedImage
         return cell
     }

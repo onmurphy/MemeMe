@@ -16,7 +16,14 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //imageView.contentMode = .ScaleAspectFit
         self.imageView!.image = meme.memedImage
+    }
+    
+    @IBAction func editMeme() {
+        let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("NewMemeController") as! ViewController
+        viewController.bottomTextField.text = meme.bottomText
+        viewController.topTextField.text = meme.topText
+        viewController.imagePickerView.image = meme.image
+        self.navigationController!.pushViewController(viewController, animated: true)
     }
 }
